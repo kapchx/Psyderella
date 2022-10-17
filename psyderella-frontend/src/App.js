@@ -1,7 +1,7 @@
 import React from "react"
-import Logo from "./components/Logo"
+import Header from "./components/Header"
 
 const App = () => {
-  return <Logo/>
+  return <Header/>
 }
 export default App;
