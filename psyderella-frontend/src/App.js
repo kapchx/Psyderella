@@ -1,6 +1,7 @@
 import React from "react"
+import Logo from "./components/Logo"
 
 const App = () => {
-  return <h1>Hello world!</h1>
+  return <Logo/>
 }
 export default App;
