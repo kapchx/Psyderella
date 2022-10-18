@@ -1,20 +1,18 @@
-import React from "react"
+import React, { useState } from "react"
 import Header from "./components/Header"
-import Dislike from "./components/actions/Dislike"
-import Like from "./components/actions/Like"
-import Rewind from "./components/actions/Rewind"
-import Superlike from "./components/actions/Superlike"
-import Actions from "./components/Actions"
+import Person from "./components/Person"
+import data from "./data.json"
+import './App.css';
 
 const App = () => {
+  const [people, setPeople] = useState(data);
   return (
     <div className="app">
       <Header />
-      <Dislike />
-      <Like />
-      <Rewind />
-      <Superlike />
-      <Actions />
+      <Person
+        key={people[1].id}
+        person={people[1]}
+      />
     </div>
   )
 }
