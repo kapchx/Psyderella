@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import Header from "./components/Header"
 import Person from "./components/Person"
+import Result from "./components/Result"
 import data from "./data.json"
 import './App.css';
 
@@ -59,12 +60,21 @@ const App = () => {
     return (
         <div className="app">
             <Header/>
-            <Person
+            {people[1] ? (
+                <Person
                 key={people[1].id}
                 person={people[1]}
                 modifyChoices={modifyChoices}
                 likedUsers={likedUsers}
             />
+            ) : (
+                <Result
+                activeUserImage={people[activeUser].image}
+                likedUsers={likedUsers}
+                superLikedUsers={superLikedUsers}
+                />
+            )}
+            
         </div>
     )
 }
