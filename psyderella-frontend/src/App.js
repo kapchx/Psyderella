@@ -7,6 +7,7 @@ import './App.css';
 const App = () => {
     const [people, setPeople] = useState(data);
     const [likedUsers, setLikedUsers] = useState([]);
+    const [superLikedUsers, setSuperLikedUsers] = useState([]);
     const [dislikedUsers, setDislikedUsers] = useState([]);
     const activeUser = 0;
 
@@ -17,7 +18,8 @@ const App = () => {
         const newPeople = [...people];
         const newLikedUsers = [...likedUsers];
         const newDislikedUsers = [...dislikedUsers];
-        
+        const newSuperLikedUsers = [...superLikedUsers];
+
         switch (action) {
             case 'ADD_TO_LIKED_USERS':
               if (!people[activeUser].likedUsers.includes(userId)) {
@@ -37,6 +39,15 @@ const App = () => {
                     setPeople(removedPersonFromDataSrc(people, userId));
                 }
                 break;  
+            case 'ADD_TO_SUPERLIKED_USERS':
+                if (!people[activeUser].superLikedUsers.includes(userId)) {
+                    newPeople[activeUser].superLikedUsers.push(userId);
+                    newSuperLikedUsers.push(data[userId]);
+            
+                    setSuperLikedUsers(newSuperLikedUsers);
+                    setPeople(removedPersonFromDataSrc(people, userId));
+                }
+                break;
             default:
                 return people;  
     

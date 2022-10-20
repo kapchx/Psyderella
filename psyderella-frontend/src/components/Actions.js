@@ -15,7 +15,10 @@ const Actions = ({person, modifyChoices}) => {
             userId={person.id}
             modifyChoices={modifyChoices}
         />
-        <Superlike/>
+        <Superlike
+            userId={person.id}
+            modifyChoices={modifyChoices}
+        />
     </div>
 }
 export default Actions;
