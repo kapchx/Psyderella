@@ -1,7 +1,7 @@
 import React from 'react';
 import Actions from './Actions';
 
-const Person = ({ person}) => {
+const Person = ({ person, modifyChoices}) => {
   const { name, desc, age, image } = person;
 
   return (
@@ -21,6 +21,7 @@ const Person = ({ person}) => {
 
       <Actions
         person={person}
+        modifyChoices={modifyChoices}
       />
     </>
   );
