@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Dislike = ({ userId, modifySuperficialChoices }) => (
+const Dislike = ({ userId, modifyChoices }) => (
   <button
     type="button"
-    onClick={() => {}}
+    onClick={() => modifyChoices(userId, 'ADD_TO_DISLIKED_USERS')}
   >
     <img src="images/misc/dislike.png" alt="Dislike User" />
   </button>

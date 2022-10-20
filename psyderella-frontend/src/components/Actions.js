@@ -7,7 +7,10 @@ import Superlike from './actions/Superlike';
 const Actions = ({person, modifyChoices}) => {
     return <div id="actions">
         <Rewind/>
-        <Dislike/>
+        <Dislike
+            userId={person.id}
+            modifyChoices={modifyChoices}
+        />
         <Like
             userId={person.id}
             modifyChoices={modifyChoices}
