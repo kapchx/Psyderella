@@ -1,4 +1,5 @@
 import Navbar from "../components/Navbar"
+import AuthModal from "../components/AuthModal"
 import { useState } from 'react'
 
 
@@ -10,20 +11,29 @@ const Home = () => {
 
     const authToken = true
 
+    const handleClick = () => {
+        setShowModal(true)
+        setIsSignUp(true)
+    }
+
     return (
-        <div className="overlay">  
-            <Navbar 
-                minimal={false} 
-                authToken={false} 
-                setShowModal={setShowModal} 
-                showModal={showModal} 
+        <div className="overlay">
+            <Navbar
+                minimal={false}
+                authToken={false}
+                setShowModal={setShowModal}
+                showModal={showModal}
                 setIsSignUp={setIsSignUp}
             />
             <div className="Home">
                 <h1 className="primary-title">Swipe Right</h1>
-                        <button className="primary-button">
-                            {!authToken ? 'Signout' : 'Create Account'}
-                        </button>
+                <button className="primary-button" onClick={handleClick}>
+                    {!authToken ? 'Signout' : 'Create Account'}
+                </button>
+                {showModal && (
+                    <AuthModal setShowModal={setShowModal} isSignUp={isSignUp} />
+                )}
+
             </div>
         </div>
     )
