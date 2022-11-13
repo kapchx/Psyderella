@@ -8,8 +8,10 @@ const Home = () => {
     const [showModal, setShowModal] = useState(false)
     const [isSignUp, setIsSignUp] = useState(true)
 
+    const authToken = true
+
     return (
-        <div>  
+        <div className="overlay">  
             <Navbar 
                 minimal={false} 
                 authToken={false} 
@@ -17,6 +19,12 @@ const Home = () => {
                 showModal={showModal} 
                 setIsSignUp={setIsSignUp}
             />
+            <div className="Home">
+                <h1 className="primary-title">Swipe Right</h1>
+                        <button className="primary-button">
+                            {!authToken ? 'Signout' : 'Create Account'}
+                        </button>
+            </div>
         </div>
     )
 }
