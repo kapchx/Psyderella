@@ -26,8 +26,6 @@ const Onboarding = () => {
             ...prevState,
             [name]: value
         }))
-
-        console.log("fasz")
     }
 
     const handleSubmit = () => {
