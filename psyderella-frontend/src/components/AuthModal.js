@@ -1,7 +1,8 @@
 
 const AuthModal = () => {
+
     return (
-        <div >AuthModal</div>
+        <div>AuthModal</div>
     )
 }
 
