@@ -1,10 +1,11 @@
+import Chat from "./Chat"
+import ChatInput from "./ChatImput"
+
 const ChatDisplay = () => {
     return (
         <>
-            <Chat descendingOrderMessages={descendingOrderMessages} />
-            <ChatInput
-                user={user}
-                clickedUser={clickedUser} getUserMessages={getUsersMessages} getClickedUsersMessages={getClickedUsersMessages} />
+            <Chat />
+            <ChatInput/>
         </>
     )
 }

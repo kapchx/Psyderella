@@ -4,7 +4,7 @@ import ChatDisplay from "./ChatDisplay"
 
 const ChatContainer = () => {
     return (
-        <div>
+        <div className="chat-container">
             <ChatHeader/>
 
             <div>

@@ -300,3 +300,18 @@ nav .logo-container .logo {
 .img-container img {
     width: 100%;
 }
+
+/*-------- Chat Display --------*/
+.chat-display,
+.matches-display {
+    padding: 20px;
+    height: 60vh;
+    overflow-y: auto;
+}
+
+/*-------- Chat Input --------*/
+.chat-input {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
