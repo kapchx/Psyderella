@@ -8,11 +8,10 @@ const Navbar = ({ minimal, authToken, setShowModal, showModal, setIsSignUp }) =>
 
 
     return (
-        
         <nav>
-        <dim className="logo-container">
+        <div className="logo-container">
             <img className="logo" src="images/Psyderella_logo.png" />
-        </dim>
+        </div>
         {!authToken && <button 
             onClick={handleClick} 
             className="nav-button"
