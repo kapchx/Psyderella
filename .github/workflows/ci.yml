@@ -1,0 +1,48 @@
+name: CI
+
+env:
+  CI: false
+
+on:
+  push:
+    branches: [ "main", "UI-testing-and-Ci" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        
+    - name: Install dependencies
+      run: |
+        cd psyderella-frontend
+        npm ci
+        
+    - name: Build the app
+      run: |
+        cd psyderella-frontend
+        npm run build
+        
+    - name: Run component tests
+      run: |
+        cd psyderella-frontend
+        npm test
+    - name: Start the app
+      run:
+        cd psyderella-frontend
+        npm start &
+        npx wait-on --timeout 6000
+        
