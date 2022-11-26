@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import Navbar from "../components/Navbar";
+import { useCookies } from 'react-cookie'
 
 const Onboarding = () => {
-
+    const [cookies, setCookie, removeCookie] = useCookies(['user'])
     const [formData, setFormData] = useState({
-        user_id: "",
         first_name: "",
         dob_day: "",
         dob_month: "",
