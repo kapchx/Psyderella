@@ -30,6 +30,7 @@
         "no-self-compare": "off",
         "no-func-assign": "off",
         "no-loop-func": "off",
-        "no-undef": "off"
+        "no-undef": "off",
+        "no-restricted-globals": "off"
     }
 }
