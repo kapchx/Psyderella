@@ -5,7 +5,7 @@ env:
 
 on:
   push:
-    branches: [ "main", "UI-testing-and-Ci" ]
+    branches: [ "main", "Extra-tools" ]
   pull_request:
     branches: [ "main" ]
 
@@ -35,11 +35,17 @@ jobs:
       run: |
         cd psyderella-frontend
         npm run build
-        
+
+    - name: Lint with EsLint
+      run: |
+        cd psyderella-frontend
+        npm run lint
+
     - name: Run component tests
       run: |
         cd psyderella-frontend
         npm test
+
     - name: Start the app
       run:
         cd psyderella-frontend

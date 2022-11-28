@@ -1,0 +1,35 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "jest": true
+    },
+    "extends": [
+        "react-app",
+        "react-app/jest"
+    ],
+    "overrides": [
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module",
+        "project": "./tsconfig.json"
+    },
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+        "react/react-in-jsx-scope": "off",
+        "react/prop-types": "off",
+        "no-unused-vars": "off",
+        "jsx-a11y/alt-text": "off",
+        "eqeqeq": "off",
+        "no-sequences": "off",
+        "no-unused-expressions": "off",
+        "no-mixed-operators": "off",
+        "no-self-compare": "off",
+        "no-func-assign": "off",
+        "no-loop-func": "off",
+        "no-undef": "off"
+    }
+}
