@@ -77,4 +77,5 @@ jobs:
       run: |
         cd psyderella-backend
         npm run build --if-present
+    - run: sudo pm2 restart backend
         
