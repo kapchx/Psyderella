@@ -76,5 +76,5 @@ jobs:
       - name: Build the app
       run: |
         cd psyderella-backend
-        npm run build
+        npm run build --if-present
         
