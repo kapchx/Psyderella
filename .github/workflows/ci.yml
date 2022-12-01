@@ -46,12 +46,6 @@ jobs:
         cd psyderella-frontend
         npm test
 
-    - name: Start the app
-      run:
-        cd psyderella-frontend
-        npm start &
-        npx wait-on --timeout 6000
-
     - name: Install dependencies
       run: |
         cd psyderella-backend
