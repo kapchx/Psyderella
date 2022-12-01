@@ -5,12 +5,12 @@ env:
 
 on:
   push:
-    branches: [ "main", "UI-testing-and-Ci" ]
+    branches: [ "main", "Extra-tools" ]
   pull_request:
     branches: [ "main" ]
 
 jobs:
-  build:
+  build-frontend:
 
     runs-on: ubuntu-latest
 
@@ -35,14 +35,23 @@ jobs:
       run: |
         cd psyderella-frontend
         npm run build
-        
+
+    - name: Lint with EsLint
+      run: |
+        cd psyderella-frontend
+        npm run lint
+
     - name: Run component tests
       run: |
         cd psyderella-frontend
         npm test
-    - name: Start the app
-      run:
-        cd psyderella-frontend
-        npm start &
-        npx wait-on --timeout 6000
+
+    - name: Install dependencies
+      run: |
+        cd psyderella-backend
+        npm ci
+    - name: Build the app
+      run: |
+        cd psyderella-backend
+        npm run build --if-present
         
