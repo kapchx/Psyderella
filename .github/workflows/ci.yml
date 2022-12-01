@@ -52,5 +52,29 @@ jobs:
         npm start &
         npx wait-on --timeout 6000
 
+  build-backend:
 
+    runs-on: self-hosted
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        
+    - name: Install dependencies
+      run: |
+        cd psyderella-backend
+        npm ci
+
+      - name: Build the app
+      run: |
+        cd psyderella-backend
+        npm run build
         
