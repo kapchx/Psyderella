@@ -1,6 +1,6 @@
 const PORT = 8000
 const express = require('express')
-const { MongoClient } = require('mongodb')
+const { MongoClient, TopologyDescription } = require('mongodb')
 // const { v4: uuidv4 } = require('uuid')
 // const jwt = require('jsonwebtoken')
 // const cors = require('cors')
@@ -16,7 +16,6 @@ app.get('/',(req,res) => {
     res.json("Hello to my app")
 })
 
-app.listen(PORT,()=>console.log('Server running on PORT: ' + PORT))
 
 app.post('/signup', async (req, res) => {
     const client = new MongoClient(uri)
@@ -57,6 +56,7 @@ app.post('/signup', async (req, res) => {
         await client.close()
     }
 })
+
 
 app.post('/login', async (req, res) => {
     const client = new MongoClient(uri)
@@ -102,3 +102,39 @@ app.get('/users', async (req,res) => {
 })
 
 
+app.put('/user', async(req, res)=>{
+    const client = new MongoClient(uri)
+    const formData = req.body.formData
+
+
+    try{
+        await client.connect()
+        const database = client.db('app-data')
+        const users = database.collection('users')
+
+        const query = {user_id: formData.user_id}
+        const updateDocument = {
+            $set:{
+                first_name:formData.first_name,
+                dob_day:formData.dob_day,
+                dob_month : formData.dob_month,
+                dob_year:formData.dob_year,
+                show_gender : formData.show_gender,
+                gender_identity : formData.gender_identity,
+                gender_interest:formData.gender_interest,
+                url:formData.url,
+                about:formData.about,
+                matches:formData.matches
+            },
+        }
+        const insertedUser = await users.updateOne(query,updateDocument)
+        res.send(insertedUser)
+    } finally{
+        await client.close()
+    }
+})
+
+
+
+
+app.listen(PORT,()=>console.log('Server running on PORT: ' + PORT))
