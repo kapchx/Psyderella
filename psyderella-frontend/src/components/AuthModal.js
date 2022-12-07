@@ -27,9 +27,8 @@ function AuthModal({ setShowModal, isSignUp }) {
       const response = await axios.post(`http://localhost:8000/${isSignUp ? 'signup' : 'login'}`, { email, password });
 
       setCookie('AuthToken', response.data.token);
-      setCookie('UserId', response.data.userId)
 
-      const succes = response.status == 201;
+      const succes = response.status === 201;
       if (succes && isSignUp) navigate('/onBoarding');
       if (succes && !isSignUp) navigate('/dashboard');
     } catch (error) {
