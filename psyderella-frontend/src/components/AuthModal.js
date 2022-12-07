@@ -32,6 +32,9 @@ function AuthModal({ setShowModal, isSignUp }) {
       const succes = response.status === 201;
       if (succes && isSignUp) navigate('/onBoarding');
       if (succes && !isSignUp) navigate('/dashboard');
+
+      window.location.reload()
+
     } catch (error) {
       console.log(error);
     }
@@ -61,14 +64,14 @@ function AuthModal({ setShowModal, isSignUp }) {
           onChange={(e) => setPassword(e.target.value)}
         />
         {isSignUp && (
-        <input
-          type="password"
-          id="password-check"
-          name="password-check"
-          placeholder="confirm password"
-          required
-          onChange={(e) => setConfirmPassword(e.target.value)}
-        />
+          <input
+            type="password"
+            id="password-check"
+            name="password-check"
+            placeholder="confirm password"
+            required
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          />
         )}
         <input className="secondary-button" type="submit" />
         <p>{error}</p>
