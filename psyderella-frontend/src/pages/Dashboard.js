@@ -11,6 +11,7 @@ function Dashboard() {
 
 
   const userId = cookies.UserId
+
   const getUser = async()=>{
     try{
       const response = await axios.get('http://localhost:8000/user',{
@@ -23,11 +24,9 @@ function Dashboard() {
   }
 
 
-  useEffect(()=>{
+  useEffect(() => {
     getUser()
-  },[])
-
-  console.log('user', user);
+  }, [ user ])
 
   const characters = [
     {
