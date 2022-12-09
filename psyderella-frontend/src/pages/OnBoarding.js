@@ -15,6 +15,7 @@ function Onboarding() {
     show_gender: false,
     gender_identity: 'man',
     gender_interest: 'woman',
+    role: '',
     url: '',
     about: '',
     matches: [],
@@ -133,6 +134,31 @@ function Onboarding() {
                 checked={formData.gender_identity === 'more'}
               />
               <label htmlFor="more-gender-identity">More</label>
+            </div>
+
+            <label>Role</label>
+            <div className="multiple-input-container">
+
+              <label htmlFor="psychologist-role">Psychologist</label>
+              <input
+                id="psychologist-role"
+                type="radio"
+                name="role"
+                value="Psychologist"
+                onChange={handleChange}
+                checked={formData.role === 'psychologist'}
+              />
+              <label htmlFor="patient-role">Patiet</label>
+              <input
+                id="patient-role"
+                type="radio"
+                name="role"
+                value="Patient"
+                onChange={handleChange}
+                checked={formData.role === 'patient'}
+              />
+              
+              
             </div>
 
             <label htmlFor="show-gender">Show Gender on my Profile</label>
