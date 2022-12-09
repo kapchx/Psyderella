@@ -106,13 +106,27 @@ app.get('/user', async (req, res) => {
 
 app.get('/users', async (req, res) => {
     const client = new MongoClient(uri)
+    const userIds = JSON.parse(req.query.userIds)
+    console.log(userIds)
     try {
         await client.connect()
         const database = client.db('app-data')
         const users = database.collection('users')
 
-        const returnedUsers = await users.find().toArray()
-        res.send(returnedUsers)
+        const pipleline = 
+            [
+                {
+                    '$match': {
+                        'user_id': {
+                            '$in': userIds
+                        }
+                    }
+                }
+            ]
+
+        const foundUsers = await users.aggregate(pipleline).toArray();
+        res.send(foundUsers)
+        console.log(foundUsers)
     } finally {
         await client.close()
     }
@@ -169,6 +183,33 @@ app.put('/user', async (req, res) => {
     } finally {
         await client.close()
     }
+})
+
+app.put('/addmatch', async (req, res) => {
+
+    console.log("fuck")
+    const client = new MongoClient(uri)
+    const { userId, matchedUserId } = req.body;
+
+    try{
+        await client.connect()
+        const database = client.db('app-data')
+        const users = database.collection('users')
+        
+            const query = { user_id: userId}
+            const updateDocument = {
+                $push: { matches: { userd: matchedUserId }}
+            }
+
+            const user = await users.updateOne(query, updateDocument)
+            res.send(user)
+        
+    } finally {
+        await client.close()
+    }
+
+    
+
 })
 
 

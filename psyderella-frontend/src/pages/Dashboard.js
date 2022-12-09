@@ -9,6 +9,8 @@ function Dashboard() {
   const [user, setUser] = useState(null)
   const [genderedUsers, setGenderedUsers] = useState(null)
   const [cookies, setCooike, removeCookie] = useCookies(['user'])
+  const [lastDirection, setLastDirection] = useState()
+  const [lastswipedUserId, setLastswipedUserId] = useState()
 
 
   const userId = cookies.UserId
@@ -45,15 +47,40 @@ function Dashboard() {
 
   useEffect(() => {
     getUser()
-    getGenderedUsers()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user, genderedUsers])
+
+// eslint-disable-next-line react-hooks/exhaustive-deps
+}, [])
+
+useEffect(() => {
+    if (user) {
+        getGenderedUsers()
+    }
+// eslint-disable-next-line react-hooks/exhaustive-deps
+}, [user])
 
 
-  const [lastDirection, setLastDirection] = useState();
+  
 
-  const swiped = (direction, nameToDelete) => {
-    console.log(`removing: ${nameToDelete}`);
+  const updatedMatches = async (matchedUserId) => {
+      try {
+        await axios.put('http://localhost:8000/addmatch',{
+          userId,
+          matchedUserId
+        })
+        getUser()
+      }catch(error){
+        console.log(error)
+      }
+  }
+
+   
+
+  const swiped = (direction, swipedUserId) => {
+    if (direction === "right" && lastswipedUserId !== swipedUserId){
+      updatedMatches(swipedUserId)
+      
+    }
+    setLastswipedUserId(swipedUserId)
     setLastDirection(direction);
   };
 
@@ -61,7 +88,7 @@ function Dashboard() {
     console.log(`${name}left the screen`);
   };
 
-
+  console.log(user)
   return (
     <>
       {user &&
@@ -88,14 +115,9 @@ function Dashboard() {
                  
                 </>
               ))}
-              <div className="swipe-info">
-                {lastDirection ? (
-                  <p>
-                    You swiped
-                    {lastDirection}
-                  </p>
-                ) : <p />}
-              </div>
+               <div className="swipe-info">
+                  {lastDirection ? <p>You swiped {lastDirection}</p> : <p/>}
+               </div>
             </div>
           </div>
         </div>}
