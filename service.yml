@@ -6,8 +6,10 @@ spec:
   type: LoadBalancer
   ports:
     - port: 3000
+      name: fe
       targetPort: 3000
     - port: 8000
       targetPort: 8000
+      name: be
   selector:
     app: psyderella
