@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: psyderella
-        image: LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY/IMAGE:TAG
+        image: gcr.io/starlit-lotus-350314/static-site@sha256:d01cbe327e9b9d7c89da9e9121d2d31fa53e5a1673372850af560813fb3cfead
         ports:
         - containerPort: 8000
         - containerPort: 3000
