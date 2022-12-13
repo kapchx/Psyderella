@@ -17,7 +17,6 @@ spec:
       labels:
         app: psyderella
     spec:
-      imagePullPolicy: Always
       containers:
       - name: psyderella
         image: LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY/IMAGE:TAG
