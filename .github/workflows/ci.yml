@@ -3,7 +3,7 @@ name: Build and Deploy to GKE
 env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
   GKE_CLUSTER: psyderella
-  GKE_ZONE: europe-central2-a
+  GKE_ZONE: europe-central2
   DEPLOYMENT_NAME: gke-test
   IMAGE: static-site
 
