@@ -1,5 +1,5 @@
 import Chat from './Chat';
-import ChatInput from './ChatImput';
+import ChatInput from './ChatInput';
 import axios from "axios";
 import { useEffect, useState } from 'react';
 
@@ -68,11 +68,13 @@ const ChatDisplay = ({user,clickedUser}) => {
 
 
   return (
-    <>
-      <Chat descendingOrderMessages={descendingOrderMessages}/>
-      <ChatInput />
-    </>
-  );
+          <>
+          <Chat descendingOrderMessages={descendingOrderMessages}/>
+       <ChatInput
+           user={user}
+           clickedUser={clickedUser} getUserMessages={getUsersMessages} getClickedUsersMessages={getClickedUsersMessages}/>
+          </>
+      )
 
 }
 
