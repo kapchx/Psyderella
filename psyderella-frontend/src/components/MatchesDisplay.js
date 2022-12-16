@@ -18,11 +18,10 @@ const  MatchesDisplay = ({ matches, setClickedUser }) => {
     }
   }
 
-  console.log(matchedProfiles)
 
   useEffect(() => {
     getMatches()
-  }, [])
+  }, [matches])
 
 
 
